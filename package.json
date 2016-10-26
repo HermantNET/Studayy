@@ -1,6 +1,7 @@
 {
-  "name": "Studayy",
+  "name": "studayy",
   "version": "0.0.1",
+  "license": "Attribution-NonCommercial 3.0 Unported",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
