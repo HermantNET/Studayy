@@ -11,14 +11,14 @@ const reducer = combineReducers(reducers);
 const store = createStore(reducer);
 
 // Components
-import Home from './components/smart/Home.js';
+import Main from './components/smart/Main.js';
 
 // Application entry
 export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Home />
+        <Main />
       </Provider>
     );
   }
