@@ -23,3 +23,8 @@ const DELETE_SUBJECT = 'DELETE_SUBJECT';
 
 // Subject major-actions
 const GET_ALL_SUBJECT_TASKS = 'GET_ALL_SUBJECT_TASKS';
+
+// *------------------------------------------------------*
+
+// Navigation
+const LOAD_PAGE = 'LOAD_PAGE';

@@ -14,13 +14,17 @@ class Toolbar extends Component {
       <ToolbarAndroid
       	logo={this.props.logo}
       	title={this.props.title}
-      	subtitle={this.props.subtitle} />
+      	subtitle={this.props.subtitle}
+      	actions={[{title: 'Options', show: 'always', showWithText: true}]}
+      	style={styles.Toolbar} />
     );
   }
 }
 
 const styles = StyleSheet.create({
-
+	Toolbar: {
+		height: 56
+	}
 });
 
 

@@ -7,17 +7,22 @@ import React, {
 import {
 	StyleSheet,
 	View,
+	Text
 } from 'react-native';
 
 // Components
-import NavMenu from './NavMenu';
+import Toolbar from './Toolbar';
+import Footer from '../dumb/Footer';
 
 class Layout extends Component {
 	render() {
 		return (
-			<View>
-				<NavMenu />
-
+			<View style={{flex: 1, justifyContent: 'space-between'}}>
+				<Toolbar title="Studyy" subtitle="Home" />
+				<View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+					{this.props.children}
+				</View>
+				<Footer items={['Home', 'Today', 'Tasks', 'Goals']} />
 			</View>
 		);
 	}
