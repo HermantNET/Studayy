@@ -1,18 +1,23 @@
 // Action creators
 import * as actions from './actions.js';
 
-function foo() {
-  return {
-    type: actions.foo
-  }
-}
-
-function createTask(subject, name, time, finishBy) {
+// *--------------------------------------------------------------------------*
+// Task REST actions
+export function createTask(subject, name, time, finishBy, days) {
 	return {
 		type: actions.CREATE_TASK,
 		subject,
 		name,
 		time,
-		finishBy
-	}
+		finishBy,
+		days
+	};
+}
+
+// *--------------------------------------------------------------------------*
+// Subject REST actions
+// *--------------------------------------------------------------------------*
+// Navigation
+export function loadPage(page, title, subtitle) {
+	return {type: actions.LOAD_PAGE, page, title, subtitle};
 }

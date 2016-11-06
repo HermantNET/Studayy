@@ -1,11 +1,7 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
-export const pallete = {
+export const pallete = {};
 
-};
-
-const masterStyles = StyleSheet.create({
-
-});
+const masterStyles = StyleSheet.create({});
 
 export default masterStyles;

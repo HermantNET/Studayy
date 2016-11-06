@@ -1,31 +1,12 @@
 'use strict';
 
-import React, {
-	Component
-} from 'react';
-
-import {
-	StyleSheet,
-	View,
-} from 'react-native';
+import React from 'react';
 
 // Components
-import Layout from './Layout';
-import Home from '../dumb/Home';
+import PageHandler from './PageHandler';
 
-class Main extends Component {
-	render() {
-		return (
-			<Layout>
-      		<Home />
-      </Layout>
-		);
-	}
-}
-
-const styles = StyleSheet.create({
-
-});
-
+const Main = () => {
+	return <PageHandler/>;
+};
 
 export default Main;

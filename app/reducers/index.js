@@ -1,7 +1,7 @@
+import {combineReducers} from 'redux';
+
 // Import Reducers
-import foo from './foo.js';
+import navigation from './navigation';
 
 // Export Reducers
-export {
-  foo
-}
+export default combineReducers({navigation});
