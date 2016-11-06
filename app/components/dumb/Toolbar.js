@@ -21,7 +21,8 @@ const Toolbar = (props) => {
 
 const styles = StyleSheet.create({
 	Toolbar: {
-		height: 56
+		height: 56,
+		backgroundColor: 'lightgrey'
 	}
 });
 

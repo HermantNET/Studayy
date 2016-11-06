@@ -7,7 +7,11 @@ const Footer = (props) => {
 			{props
 				.items
 				.map((item, index) => {
-					return <FooterItem item={item} key={index} onTabClick={props.onTabClick}/>;
+					return <FooterItem
+						item={item}
+						key={index}
+						onTabClick={props.onTabClick}
+					       />;
 				})}
 		</View>
 	);
@@ -18,7 +22,7 @@ const FooterItem = (props) => {
 		<TouchableHighlight
 			onPress={props
 			.onTabClick
-			.bind(null, props.item, 'Studayy', props.item)}
+			.bind(null, props.item, 'Studyy', props.item)}
 			style={styles.item}
 			underlayColor='#FFF'
 		>

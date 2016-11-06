@@ -10,9 +10,10 @@ import reducer from './reducers/index.js';
 const state = {
 	navigation: {
 		pages: [
-			'Home', 'Today', 'Tasks', 'Goals'
+			'Home', 'Tasks', 'Record', 'Goals'
 		],
 		page: 'Home',
+		currentSlide: 0,
 		title: 'Studyy',
 		subtitle: 'Home'
 	}
