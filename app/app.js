@@ -16,7 +16,24 @@ const state = {
 		currentSlide: 0,
 		title: 'Studyy',
 		subtitle: 'Home'
-	}
+	},
+	subjects: [
+		{
+			name: 'Chemistry',
+			tasks: [
+				{
+					name: 'Make cake'
+				}
+			]
+		}, {
+			name: 'History',
+			tasks: [
+				{
+					name: "Read about the 90's"
+				}
+			]
+		}
+	]
 };
 
 // Store

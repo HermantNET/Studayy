@@ -5,7 +5,7 @@ import Layout from '../dumb/Layout';
 
 // pages
 import Home from '../dumb/pages/Home';
-import Tasks from '../dumb/pages/Tasks';
+import TaskManager from './TaskManager';
 import Record from '../dumb/pages/Record';
 import Goals from '../dumb/pages/Goals';
 
@@ -14,7 +14,7 @@ const getCurrentPage = (page) => {
 		case 'Home':
 			return <Home/>;
 		case 'Tasks':
-			return <Tasks/>;
+			return <TaskManager/>;
 		case 'Record':
 			return <Record/>;
 		case 'Goals':
