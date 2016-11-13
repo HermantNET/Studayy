@@ -13,11 +13,19 @@ export function createTask(subject, name, time, finishBy, days) {
 		days
 	};
 }
+// Task other actions
+export function expandTask(subjectIndex, taskIndex) {
+	return {type: actions.EXPAND_TASK, subjectIndex, taskIndex};
+}
 
 // *----------------------------------------------------*
-// Subject REST actions Subject other actions
-export function expandSubject(subject) {
-	return {type: actions.EXPAND_SUBJECT, subject};
+// Subject REST actions
+export function createSubject(name, days) {
+	return {type: actions.CREATE_SUBJECT, name, days};
+}
+// Subject other actions
+export function expandSubject(subjectIndex) {
+	return {type: actions.EXPAND_SUBJECT, subjectIndex};
 }
 // *----------------------------------------------------*
 // Navigation

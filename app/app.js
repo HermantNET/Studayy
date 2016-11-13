@@ -23,7 +23,8 @@ const state = {
 			expanded: false,
 			tasks: [
 				{
-					name: 'Make cake'
+					name: "Make cake",
+					expanded: false
 				}
 			]
 		}, {
@@ -31,7 +32,8 @@ const state = {
 			expanded: false,
 			tasks: [
 				{
-					name: "Read about the 90's"
+					name: "Read about the 90's",
+					expanded: false
 				}
 			]
 		}, {
@@ -39,7 +41,8 @@ const state = {
 			expanded: false,
 			tasks: [
 				{
-					name: "Trig assignment"
+					name: "Trig assignment",
+					expanded: false
 				}
 			]
 		}, {
@@ -47,11 +50,14 @@ const state = {
 			expanded: false,
 			tasks: [
 				{
-					name: "Make React Native App"
+					name: "Make React Native App",
+					expanded: false
 				}, {
-					name: "Refactor school project"
+					name: "Refactor school project",
+					expanded: false
 				}, {
-					name: "Complete coding challenge"
+					name: "Complete coding challenge for the christmas",
+					expanded: false
 				}
 			]
 		}

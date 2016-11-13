@@ -8,46 +8,50 @@ const masterStyles = StyleSheet.create({
 		flexShrink: 300,
 		flexGrow: 2500,
 		alignItems: 'flex-start',
-		justifyContent: 'center',
-		padding: 20
+		justifyContent: 'center'
 	},
 	pageCenter: {
 		flex: 1,
 		alignItems: 'center',
-		justifyContent: 'center',
-		padding: 20
+		justifyContent: 'center'
 	},
+
 	flexRow: {
 		flexDirection: 'row'
 	},
+
 	listItem: {
 		flex: 1,
-		margin: 5,
-		padding: 10,
-		fontSize: 20,
+		padding: 14,
+		fontSize: 16,
 		borderTopWidth: StyleSheet.hairlineWidth,
-		borderTopColor: 'grey',
-		backgroundColor: 'beige',
-		elevation: 4
+		borderTopColor: 'grey'
 	},
 	listSubItem: {
-		padding: 10,
-		fontSize: 16,
-		margin: 7,
+		padding: 14,
+		fontSize: 12,
 		borderTopWidth: StyleSheet.hairlineWidth,
 		borderTopColor: 'lightgrey',
-		textAlign: 'right',
-		elevation: 2
+		textAlign: 'right'
 	},
-	listEven: {
-		backgroundColor: 'rgba(0,0,0,0.1)'
+	listItemContainer: {
+		margin: 4,
+		marginLeft: 30,
+		marginRight: 30,
+		elevation: 3,
+		backgroundColor: 'beige'
 	},
-	listOdd: {
-		backgroundColor: 'rgba(0,0,0,0.2)'
+	listSubItemContainer: {
+		margin: 6,
+		marginLeft: 50,
+		marginRight: 50,
+		elevation: 6,
+		backgroundColor: 'thistle'
 	},
+
 	textTitle: {
 		fontSize: 24,
-		paddingBottom: 10,
+		margin: 10,
 		textAlign: 'center'
 	}
 });

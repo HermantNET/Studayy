@@ -4,10 +4,11 @@ export const CREATE_TASK = 'CREATE_TASK';
 export const EDIT_TASK = 'EDIT_TASK';
 export const DELETE_TASK = 'DELETE_TASK';
 
-// Task minor-actions
+// Task other actions
 export const TASK_COMPLETE = 'TASK_COMPLETE';
 export const TASK_INCREMENT_TIME = 'TASK_INCREMENT_TIME';
 export const TASK_DECREMENT_TIME = 'TASK_DECREMENT_TIME';
+export const EXPAND_TASK = 'TASK_EXPAND';
 
 // Task timer actions
 export const TASK_TIMER_START = 'TASK_TIMER_START';

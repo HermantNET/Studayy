@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {ListView} from 'react-native';
-import {expandSubject} from '../../actions/actionCreators';
+import {expandSubject, expandTask} from '../../actions/actionCreators';
 import Subjects from '../dumb/pages/Subjects';
 
 const mapStateToProps = (state, ownProps) => {
@@ -14,8 +14,11 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		expandSubject: (subject) => {
-			dispatch(expandSubject(subject));
+		expandSubject: (subjectIndex) => {
+			dispatch(expandSubject(subjectIndex));
+		},
+		expandTask: (subjectIndex, taskIndex) => {
+			dispatch(expandTask(subjectIndex, taskIndex));
 		}
 	};
 };
