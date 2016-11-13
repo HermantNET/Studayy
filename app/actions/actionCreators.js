@@ -15,7 +15,10 @@ export function createTask(subject, name, time, finishBy, days) {
 }
 
 // *----------------------------------------------------*
-// Subject REST actions
+// Subject REST actions Subject other actions
+export function expandSubject(subject) {
+	return {type: actions.EXPAND_SUBJECT, subject};
+}
 // *----------------------------------------------------*
 // Navigation
 export function loadPage(page, title, subtitle) {

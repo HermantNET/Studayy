@@ -20,6 +20,7 @@ const state = {
 	subjects: [
 		{
 			name: 'Chemistry',
+			expanded: false,
 			tasks: [
 				{
 					name: 'Make cake'
@@ -27,9 +28,30 @@ const state = {
 			]
 		}, {
 			name: 'History',
+			expanded: false,
 			tasks: [
 				{
 					name: "Read about the 90's"
+				}
+			]
+		}, {
+			name: 'Maths',
+			expanded: false,
+			tasks: [
+				{
+					name: "Trig assignment"
+				}
+			]
+		}, {
+			name: 'Computer Science',
+			expanded: false,
+			tasks: [
+				{
+					name: "Make React Native App"
+				}, {
+					name: "Refactor school project"
+				}, {
+					name: "Complete coding challenge"
 				}
 			]
 		}

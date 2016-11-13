@@ -20,8 +20,9 @@ export const CREATE_SUBJECT = 'CREATE_SUBJECT';
 export const EDIT_SUBJECT = 'EDIT_SUBJECT';
 export const DELETE_SUBJECT = 'DELETE_SUBJECT';
 
-// Subject major-actions
+// Subject other actions
 export const GET_ALL_SUBJECT_TASKS = 'GET_ALL_SUBJECT_TASKS';
+export const EXPAND_SUBJECT = 'EXPAND_SUBJECT';
 
 // *------------------------------------------------------*
 // Navigation
