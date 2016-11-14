@@ -16,6 +16,12 @@ const masterStyles = StyleSheet.create({
 		justifyContent: 'center'
 	},
 
+	containerSpace: {
+		flexDirection: 'row',
+		justifyContent: 'space-around',
+		alignItems: 'center'
+	},
+
 	flexRow: {
 		flexDirection: 'row'
 	},
@@ -38,14 +44,14 @@ const masterStyles = StyleSheet.create({
 		margin: 4,
 		marginLeft: 30,
 		marginRight: 30,
-		elevation: 3,
+		elevation: 2,
 		backgroundColor: 'beige'
 	},
 	listSubItemContainer: {
 		margin: 6,
 		marginLeft: 50,
 		marginRight: 50,
-		elevation: 6,
+		elevation: 4,
 		backgroundColor: 'thistle'
 	},
 
@@ -53,6 +59,20 @@ const masterStyles = StyleSheet.create({
 		fontSize: 24,
 		margin: 10,
 		textAlign: 'center'
+	},
+	textSubTitle: {
+		fontSize: 16,
+		marginBottom: 20,
+		textAlign: 'center'
+	},
+	textLabel: {
+		fontWeight: '700',
+		textAlign: 'center'
+	},
+
+	marginVertical: {
+		marginTop: 5,
+		marginBottom: 5
 	}
 });
 

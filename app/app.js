@@ -24,7 +24,12 @@ const state = {
 			tasks: [
 				{
 					name: "Make cake",
-					expanded: false
+					expanded: false,
+					estimatedTime: [0, 2, 30],
+					actualTime: [0, 1, 15],
+					finishBy: [2017, 11, 26],
+					days: [0, 6],
+					distribute: false
 				}
 			]
 		}, {
@@ -33,7 +38,12 @@ const state = {
 			tasks: [
 				{
 					name: "Read about the 90's",
-					expanded: false
+					expanded: false,
+					estimatedTime: [0, 2, 30],
+					actualTime: [0, 1, 15],
+					finishBy: [2017, 2, 11],
+					days: [0, 6],
+					distribute: true
 				}
 			]
 		}, {
@@ -42,7 +52,12 @@ const state = {
 			tasks: [
 				{
 					name: "Trig assignment",
-					expanded: false
+					expanded: false,
+					estimatedTime: [0, 2, 30],
+					actualTime: [0, 1, 15],
+					finishBy: [2017, 1, 1],
+					days: [0, 6],
+					distribute: true
 				}
 			]
 		}, {
@@ -51,13 +66,28 @@ const state = {
 			tasks: [
 				{
 					name: "Make React Native App",
-					expanded: false
+					expanded: false,
+					estimatedTime: [0, 2, 30],
+					actualTime: [0, 1, 15],
+					finishBy: [2017, 14, 26],
+					days: [0, 6],
+					distribute: true
 				}, {
 					name: "Refactor school project",
-					expanded: false
+					expanded: false,
+					estimatedTime: [0, 2, 30],
+					actualTime: [0, 1, 15],
+					finishBy: [2016, 11, 12],
+					days: [0, 6],
+					distribute: true
 				}, {
 					name: "Complete coding challenge for the christmas",
-					expanded: false
+					expanded: false,
+					estimatedTime: [0, 2, 30],
+					actualTime: [0, 1, 15],
+					finishBy: [2016, 11, 24],
+					days: [0, 6],
+					distribute: true
 				}
 			]
 		}

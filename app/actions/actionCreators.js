@@ -3,14 +3,16 @@ import * as actions from './actions.js';
 
 // *----------------------------------------------------*
 // Task REST actions
-export function createTask(subject, name, time, finishBy, days) {
+export function createTask(subject, name, estimatedTime, actualTime, finishBy, days, distribute) {
 	return {
 		type: actions.CREATE_TASK,
 		subject,
 		name,
-		time,
+		estimatedTime,
+		actualTime,
 		finishBy,
-		days
+		days,
+		distribute
 	};
 }
 // Task other actions

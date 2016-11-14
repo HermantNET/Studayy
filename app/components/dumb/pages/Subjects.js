@@ -3,10 +3,15 @@ import {
 	View,
 	ScrollView,
 	Text,
-	ListView,
-	Modal,
-	TouchableHighlight
+	ListView
 } from 'react-native';
+
+// Components
+import ListItem from '../ListItem';
+import ListSubItem from '../ListSubItem';
+import TaskDetails from '../TaskDetails';
+
+// Styles
 import ms from '../../../masterStyles';
 
 const Subjects = (props) => {
@@ -20,59 +25,30 @@ const Subjects = (props) => {
 				renderHeader={() => <Text style={ms.textTitle}>Subjects</Text>}
 				renderRow={(subject, _, subjectIndex) => {
 				return (
-					// TODO turn into listItem component
 					<View>
-						<TouchableHighlight
-							onPress={() => {
-							props.expandSubject(subjectIndex);
-						}}
-							style={ms.listItemContainer}
-							underlayColor="#CCBB00"
-						>
-							<View>
-								<Text
-									ellipsizeMode="tail"
-									numberOfLines={1}
-									style={ms.listItem}
-								>
-									{subject.name}
-								</Text>
-							</View>
-						</TouchableHighlight>
+						<ListItem
+							expandSubject={props.expandSubject}
+							index={subjectIndex}
+							item={subject}
+						/>
 						{subject.expanded
 							? <View>
-								{subject
-										.tasks
-										.map((task, taskIndex) => {
+								{subject.tasks.map((task, taskIndex) => {
 											return (
-												// TODO turn into listSubItem component
 												<View key={taskIndex}>
-													<TouchableHighlight
-														onPress={() => {
-														props.expandTask(subjectIndex, taskIndex);
-													}}
-														style={ms.listSubItemContainer}
-														underlayColor="#CCBB00"
-													>
-														<Text
-															ellipsizeMode="tail"
-															numberOfLines={1}
-															style={ms.listSubItem}
-														>
-															{task.name}
-														</Text>
-													</TouchableHighlight>
-													<Modal
-														animationType="slide"
-														onRequestClose={() => {
-															props.expandTask(subjectIndex, taskIndex);
-														}}
-														visible={task.expanded}
-													>
-														<View style={ms.pageCenter}>
-															<Text>{task.name}</Text>
-														</View>
-													</Modal>
+													<ListSubItem
+														expandTask={props.expandTask}
+														item={task}
+														subjectIndex={subjectIndex}
+														taskIndex={taskIndex}
+													/>
+													<TaskDetails
+														expandTask={props.expandTask}
+														subjectIndex={subjectIndex}
+														subjectName={subject.name}
+														task={task}
+														taskIndex={taskIndex}
+													/>
 												</View>
 											);
 										})}
