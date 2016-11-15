@@ -6,7 +6,7 @@ const ListItem = (props) => {
   return (
 	<TouchableHighlight
 		onPress={() => {
-      props.expandSubject(props.index);
+      props.toggleShowSubjectTasks(props.index);
     }}
 		style={ms.listItemContainer}
 		underlayColor="#CCBB00"

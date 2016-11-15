@@ -1,24 +1,39 @@
 import {connect} from 'react-redux';
 import {ListView} from 'react-native';
-import {expandSubject, expandTask} from '../../actions/actionCreators';
+import {
+	toggleShowTaskDetails,
+	toggleShowSubjectTasks,
+	setSelectedTask
+} from '../../actions/actionCreators';
 import Subjects from '../dumb/pages/Subjects';
 
 const mapStateToProps = (state, ownProps) => {
 	return {
 		subjects: state.subjects,
+		showSubjectTasks: state.interactions.showSubjectTasks,
+		selectedTask: state.interactions.selectedTask,
+		showTaskDetails: state.interactions.showTaskDetails,
 		dataSource: new ListView.DataSource({
-			rowHasChanged: () => state.subjects !== ownProps.subjects
+			rowHasChanged: () => {
+				return (
+					state.interactions.showSubjectTasks !== ownProps.showSubjectTasks ||
+					state.subjects !== ownProps.subjects
+				);
+			}
 		}).cloneWithRows(state.subjects)
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		expandSubject: (subjectIndex) => {
-			dispatch(expandSubject(subjectIndex));
+		toggleShowSubjectTasks: (subjectIndex) => {
+			dispatch(toggleShowSubjectTasks(subjectIndex));
 		},
-		expandTask: (subjectIndex, taskIndex) => {
-			dispatch(expandTask(subjectIndex, taskIndex));
+		toggleShowTaskDetails: () => {
+			dispatch(toggleShowTaskDetails());
+		},
+		setSelectedTask: (task) => {
+			dispatch(setSelectedTask(task));
 		}
 	};
 };

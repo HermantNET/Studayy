@@ -15,20 +15,13 @@ export function createTask(subject, name, estimatedTime, actualTime, finishBy, d
 		distribute
 	};
 }
-// Task other actions
-export function expandTask(subjectIndex, taskIndex) {
-	return {type: actions.EXPAND_TASK, subjectIndex, taskIndex};
-}
 
 // *----------------------------------------------------*
 // Subject REST actions
 export function createSubject(name, days) {
 	return {type: actions.CREATE_SUBJECT, name, days};
 }
-// Subject other actions
-export function expandSubject(subjectIndex) {
-	return {type: actions.EXPAND_SUBJECT, subjectIndex};
-}
+
 // *----------------------------------------------------*
 // Navigation
 export function loadPage(page, title, subtitle) {
@@ -37,4 +30,18 @@ export function loadPage(page, title, subtitle) {
 
 export function slideChanged(index) {
 	return {type: actions.SLIDE_CHANGED, index};
+}
+
+// *----------------------------------------------------*
+// interactions
+export function toggleShowSubjectTasks(subjectIndex) {
+	return {type: actions.TOGGLE_SHOW_SUBJECT_TASKS, subjectIndex};
+}
+
+export function setSelectedTask(task) {
+	return {type: actions.SET_SELECTED_TASK, task};
+}
+
+export function toggleShowTaskDetails() {
+	return {type: actions.TOGGLE_SHOW_TASK_DETAILS};
 }

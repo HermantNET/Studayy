@@ -3,15 +3,23 @@ import { View, Text, StyleSheet, Modal} from 'react-native';
 import ms from '../../masterStyles';
 
 const TaskDetails = (props) => {
-  var task = props.task;
+  var task = props.task === null ? {
+    name: "Unavailable",
+    estimatedTime: [0, 0, 0],
+    actualTime: [0, 0, 0],
+    finishBy: [2016, 0, 0],
+    days: [0, 0],
+    distribute: false
+  }
+  : props.task;
   return (
 	<Modal
 		animationType="slide"
 		onRequestClose={() => {
-        props.expandTask(props.subjectIndex, props.taskIndex);
+        props.toggleShowTaskDetails();
       }}
 		transparent
-		visible={props.task.expanded}
+		visible={props.showTaskDetails}
 	>
 		<View style={[ms.pageCenter, {padding: 20, margin: 20, backgroundColor: 'white', elevation: 25}]}>
 			<Text style={ms.textTitle}>{props.subjectName}</Text>

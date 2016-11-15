@@ -14,6 +14,7 @@ import TaskDetails from '../TaskDetails';
 // Styles
 import ms from '../../../masterStyles';
 
+
 const Subjects = (props) => {
 	return (
 		<ScrollView
@@ -27,27 +28,21 @@ const Subjects = (props) => {
 				return (
 					<View>
 						<ListItem
-							expandSubject={props.expandSubject}
 							index={subjectIndex}
 							item={subject}
+							toggleShowSubjectTasks={props.toggleShowSubjectTasks}
 						/>
-						{subject.expanded
+						{props.showSubjectTasks.some((index) => index === subjectIndex)
 							? <View>
 								{subject.tasks.map((task, taskIndex) => {
 											return (
 												<View key={taskIndex}>
 													<ListSubItem
-														expandTask={props.expandTask}
 														item={task}
+														setSelectedTask={props.setSelectedTask}
 														subjectIndex={subjectIndex}
 														taskIndex={taskIndex}
-													/>
-													<TaskDetails
-														expandTask={props.expandTask}
-														subjectIndex={subjectIndex}
-														subjectName={subject.name}
-														task={task}
-														taskIndex={taskIndex}
+														toggleShowTaskDetails={props.toggleShowTaskDetails}
 													/>
 												</View>
 											);
@@ -57,6 +52,11 @@ const Subjects = (props) => {
 					</View>
 				);
 			}}
+			/>
+			<TaskDetails
+				showTaskDetails={props.showTaskDetails}
+				task={props.selectedTask}
+				toggleShowTaskDetails={props.toggleShowTaskDetails}
 			/>
 		</ScrollView>
 	);

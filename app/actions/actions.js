@@ -8,7 +8,6 @@ export const DELETE_TASK = 'DELETE_TASK';
 export const TASK_COMPLETE = 'TASK_COMPLETE';
 export const TASK_INCREMENT_TIME = 'TASK_INCREMENT_TIME';
 export const TASK_DECREMENT_TIME = 'TASK_DECREMENT_TIME';
-export const EXPAND_TASK = 'TASK_EXPAND';
 
 // Task timer actions
 export const TASK_TIMER_START = 'TASK_TIMER_START';
@@ -23,10 +22,19 @@ export const DELETE_SUBJECT = 'DELETE_SUBJECT';
 
 // Subject other actions
 export const GET_ALL_SUBJECT_TASKS = 'GET_ALL_SUBJECT_TASKS';
-export const EXPAND_SUBJECT = 'EXPAND_SUBJECT';
 
 // *------------------------------------------------------*
 // Navigation
 export const LOAD_PAGE = 'LOAD_PAGE';
 export const CURRENT_SLIDE = 'CURRENT_SLIDE';
 export const SLIDE_CHANGED = 'SLIDE_CHANGED';
+
+// *------------------------------------------------------*
+// interactions
+export const TOGGLE_SHOW_SUBJECT_TASKS = 'TOGGLE_SHOW_SUBJECT_TASKS';
+export const SET_SELECTED_TASK = 'SET_SELECTED_TASK';
+export const TOGGLE_SHOW_TASK_DETAILS = 'TOGGLE_SHOW_TASK_DETAILS';
+
+// *------------------------------------------------------*
+// application mode
+export const TOGGLE_EDIT_MODE = 'TOGGLE_EDIT_MODE';
