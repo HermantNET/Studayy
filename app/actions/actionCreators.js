@@ -38,8 +38,8 @@ export function toggleShowSubjectTasks(subjectIndex) {
 	return {type: actions.TOGGLE_SHOW_SUBJECT_TASKS, subjectIndex};
 }
 
-export function setSelectedTask(task) {
-	return {type: actions.SET_SELECTED_TASK, task};
+export function setSelectedTask(subjectIndex, taskIndex) {
+	return {type: actions.SET_SELECTED_TASK, subjectIndex, taskIndex};
 }
 
 export function toggleShowTaskDetails() {

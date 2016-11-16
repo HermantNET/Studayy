@@ -1,14 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet, Modal} from 'react-native';
 import ms from '../../masterStyles';
+import moment from 'moment';
 
 const TaskDetails = (props) => {
   var task = props.task === null ? {
     name: "Unavailable",
     estimatedTime: [0, 0, 0],
     actualTime: [0, 0, 0],
-    finishBy: [2016, 0, 0],
-    days: [0, 0],
+    finishBy: [1, 0, 0],
+    days: [],
     distribute: false
   }
   : props.task;
@@ -53,15 +54,12 @@ const TaskDetails = (props) => {
 			<View style={ms.marginVertical}>
 				<Text style={ms.textLabel}>{task.distribute ? "Days" : "Possible Day"} of Work:</Text>
 				<View style={ms.containerSpace}>
-					{task.days.map((day) => <Text key={day} style={styles.pill}>{[
-          "Sunday",
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday"
-        ][day]}</Text>)}
+					{task.days.length > 0
+            ? task.days.map((day) => <Text key={day} style={styles.pill}>{
+              moment().isoWeekday(day).format("dddd").toString()
+            }</Text>)
+            : null
+          }
 				</View>
 			</View>
 		</View>

@@ -32,8 +32,8 @@ const mapDispatchToProps = (dispatch) => {
 		toggleShowTaskDetails: () => {
 			dispatch(toggleShowTaskDetails());
 		},
-		setSelectedTask: (task) => {
-			dispatch(setSelectedTask(task));
+		setSelectedTask: (subjectIndex, taskIndex) => {
+			dispatch(setSelectedTask(subjectIndex, taskIndex));
 		}
 	};
 };

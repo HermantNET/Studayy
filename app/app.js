@@ -26,7 +26,7 @@ const state = {
 					estimatedTime: [0, 2, 30],
 					actualTime: [0, 1, 15],
 					finishBy: [2017, 11, 26],
-					days: [0, 6],
+					days: [1, 6],
 					distribute: false
 				}
 			]
@@ -38,21 +38,21 @@ const state = {
 					estimatedTime: [0, 2, 30],
 					actualTime: [0, 1, 15],
 					finishBy: [2017, 14, 26],
-					days: [0, 6],
+					days: [2, 6],
 					distribute: true
 				}, {
 					name: "Refactor school project",
 					estimatedTime: [0, 2, 30],
 					actualTime: [0, 1, 15],
 					finishBy: [2016, 11, 12],
-					days: [0, 6],
+					days: [5, 6],
 					distribute: true
 				}, {
 					name: "Complete coding challenge for the christmas",
 					estimatedTime: [0, 2, 30],
 					actualTime: [0, 1, 15],
 					finishBy: [2016, 11, 24],
-					days: [0, 6],
+					days: [6, 7],
 					distribute: true
 				}
 			]
@@ -61,7 +61,10 @@ const state = {
 	interactions: {
 		// items in showSubjectTasks refer to the index of the subject(s)
 		showSubjectTasks: [null],
-		selectedTask: null,
+		selectedTask: {
+			subjectIndex: null,
+			taskIndex: null
+		},
 		showTaskDetails: false
 	}
 };

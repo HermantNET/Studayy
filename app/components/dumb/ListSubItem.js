@@ -3,24 +3,24 @@ import {Text, TouchableHighlight} from 'react-native';
 import ms from '../../masterStyles';
 
 const ListSubItem = (props) => {
-  return (
-	<TouchableHighlight
-		onPress={() => {
-      props.setSelectedTask(props.item);
-      props.toggleShowTaskDetails();
-    }}
-		style={ms.listSubItemContainer}
-		underlayColor="#CCBB00"
-	>
-		<Text
-			ellipsizeMode="tail"
-			numberOfLines={1}
-			style={ms.listSubItem}
+	return (
+		<TouchableHighlight
+			onPress={() => {
+			props.setSelectedTask(props.subjectIndex, props.taskIndex);
+			props.toggleShowTaskDetails();
+		}}
+			style={ms.listSubItemContainer}
+			underlayColor="#CCBB00"
 		>
-			{props.item.name}
-		</Text>
-	</TouchableHighlight>
-  );
+			<Text
+				ellipsizeMode="tail"
+				numberOfLines={1}
+				style={ms.listSubItem}
+			>
+				{props.item.name}
+			</Text>
+		</TouchableHighlight>
+	);
 };
 
 export default ListSubItem;

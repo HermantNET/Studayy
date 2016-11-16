@@ -16,7 +16,12 @@ export default function(state = {}, action) {
             .concat(action.subjectIndex)
       });
     case SET_SELECTED_TASK:
-      return Object.assign({}, state, {selectedTask: action.task});
+      return Object.assign({}, state, {
+        selectedTask: {
+          subjectIndex: action.subjectIndex,
+          taskIndex: action.taskIndex
+        }
+      });
     case TOGGLE_SHOW_TASK_DETAILS:
       return Object.assign({}, state, {showTaskDetails: !state.showTaskDetails});
     default:

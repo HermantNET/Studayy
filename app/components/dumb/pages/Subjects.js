@@ -55,7 +55,13 @@ const Subjects = (props) => {
 			/>
 			<TaskDetails
 				showTaskDetails={props.showTaskDetails}
-				task={props.selectedTask}
+				subjectName={props.selectedTask.subjectIndex === null
+					? null
+					: props.subjects[props.selectedTask.subjectIndex].name}
+				task={props.selectedTask.taskIndex === null
+					? null
+					: props.subjects[props.selectedTask.subjectIndex]
+						.tasks[props.selectedTask.taskIndex]}
 				toggleShowTaskDetails={props.toggleShowTaskDetails}
 			/>
 		</ScrollView>
