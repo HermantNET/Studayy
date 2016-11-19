@@ -2,34 +2,36 @@ import React from 'react';
 import {View, Text, StyleSheet, TouchableHighlight} from 'react-native';
 
 const Footer = (props) => {
-	return (
-		<View style={styles.Container}>
-			{props
+  return (
+    <View style={styles.Container}>
+      {props
 				.items
 				.map((item, index) => {
-					return <FooterItem
-						item={item}
-						key={index}
-						onTabClick={props.onTabClick}
-					       />;
+					return (
+  <FooterItem
+    item={item}
+    key={index}
+    onTabClick={props.onTabClick}
+  />
+);
 				})}
-		</View>
-	);
+    </View>
+  );
 };
 
 const FooterItem = (props) => {
-	return (
-		<TouchableHighlight
-			onPress={props
+  return (
+    <TouchableHighlight
+      onPress={props
 			.onTabClick
 			.bind(null, props.item, 'Studyy', props.item)}
-			style={styles.item}
-			underlayColor='#FFF'
-		>
-			<Text style={styles.text}>
-				<Text>{props.item}</Text>
-			</Text>
-		</TouchableHighlight>
+      style={styles.item}
+      underlayColor='#FFF'
+    >
+      <Text style={styles.text}>
+        <Text>{props.item}</Text>
+      </Text>
+    </TouchableHighlight>
 	);
 };
 

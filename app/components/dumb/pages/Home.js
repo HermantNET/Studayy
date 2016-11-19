@@ -6,8 +6,8 @@ const Home = (props) => <View style={styles.pager}>
 	<ViewPagerAndroid
 		initialPage={0}
 		onPageSelected={(e) => {
-		props.onSlideChange(e.nativeEvent.position);
-	}}
+			props.onSlideChange(e.nativeEvent.position);
+		}}
 		style={styles.pager}
 	>
 		<View style={ms.pageCenter}>

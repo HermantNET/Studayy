@@ -1,81 +1,57 @@
-import React from 'react';
-import { View, Text, StyleSheet, Modal} from 'react-native';
+import React, {Component} from 'react';
+import {ScrollView, View, Text, Modal, TouchableHighlight} from 'react-native';
 import ms from '../../masterStyles';
-import moment from 'moment';
 
-const TaskDetails = (props) => {
-  var task = props.task === null ? {
-    name: "Unavailable",
-    estimatedTime: [0, 0, 0],
-    actualTime: [0, 0, 0],
-    finishBy: [1, 0, 0],
-    days: [],
-    distribute: false
+// Components
+import TaskDetailsEdit from './TaskDetailsEdit';
+import TaskDetailsView from './TaskDetailsView';
+
+class TaskDetails extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      edit: false
+    };
   }
-  : props.task;
-  return (
-	<Modal
-		animationType="slide"
-		onRequestClose={() => {
-        props.toggleShowTaskDetails();
-      }}
-		transparent
-		visible={props.showTaskDetails}
-	>
-		<View style={[ms.pageCenter, {padding: 20, margin: 20, backgroundColor: 'white', elevation: 25}]}>
-			<Text style={ms.textTitle}>{props.subjectName}</Text>
-			<Text style={ms.textSubTitle}>{task.name}</Text>
-
-			<View style={ms.marginVertical}>
-				<Text style={ms.textLabel}>Estimated Time: </Text>
-				<View style={ms.containerSpace}>
-					<Text>{task.estimatedTime[0]} Days, </Text>
-					<Text>{task.estimatedTime[1]} Hours, </Text>
-					<Text>{task.estimatedTime[2]} Minutes </Text>
-				</View>
-			</View>
-
-			<View style={ms.marginVertical}>
-				<Text style={ms.textLabel}>Actual Time: </Text>
-				<View style={ms.containerSpace}>
-					<Text>{task.actualTime[0]} Days, </Text>
-					<Text>{task.actualTime[1]} Hours, </Text>
-					<Text>{task.actualTime[2]} Minutes </Text>
-				</View>
-			</View>
-
-			<View style={ms.marginVertical}>
-				<Text style={ms.textLabel}>Finish By Date: </Text>
-				<View style={ms.containerSpace}>
-					<Text  style={styles.pill}>{new Date(...task.finishBy).toLocaleDateString()}</Text>
-				</View>
-			</View>
-
-			<View style={ms.marginVertical}>
-				<Text style={ms.textLabel}>{task.distribute ? "Days" : "Possible Day"} of Work:</Text>
-				<View style={ms.containerSpace}>
-					{task.days.length > 0
-            ? task.days.map((day) => <Text key={day} style={styles.pill}>{
-              moment().isoWeekday(day).format("dddd").toString()
-            }</Text>)
-            : null
+  toggleEdit() {
+    this.setState({
+      edit: !this.state.edit
+    });
+  }
+  render() {
+    var task = this.props.task === null ? {
+      name: "",
+      estimatedTime: [0, 0, 0],
+      actualTime: [0, 0, 0],
+      finishBy: [1, 0, 0],
+      days: [],
+      distribute: false
+    }
+    : this.props.task;
+    return (
+      <Modal
+        animationType="fade"
+        onRequestClose={() => {
+              this.props.toggleShowTaskDetails();
+            }}
+        visible={this.props.showTaskDetails}
+      >
+        <ScrollView contentContainerStyle={[ms.pageCenter, {minHeight: 400, padding: 20, backgroundColor: 'white'}]}>
+          <Text style={ms.textTitle}>{this.props.subjectName}</Text>
+          {this.state.edit
+                ? <TaskDetailsEdit task={task} />
+                : <TaskDetailsView task={task} />
           }
-				</View>
-			</View>
-		</View>
-	</Modal>
-  );
-};
-
-const styles = StyleSheet.create({
-  pill: {
-    width: 80,
-    padding: 2,
-    margin: 2,
-    textAlign: 'center',
-    borderRadius: 10,
-    backgroundColor: 'lightgrey'
+        </ScrollView>
+        <View style={{padding: 20, margin: 20, marginTop: 0, backgroundColor: 'white', elevation: 25}}>
+          <TouchableHighlight onPress={this.toggleEdit.bind(this)}>
+            <Text>Edit</Text>
+          </TouchableHighlight>
+        </View>
+      </Modal>
+    );
   }
-});
+}
+
 
 export default TaskDetails;

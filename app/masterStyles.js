@@ -44,14 +44,14 @@ const masterStyles = StyleSheet.create({
 		margin: 4,
 		marginLeft: 30,
 		marginRight: 30,
-		elevation: 2,
+		elevation: 4,
 		backgroundColor: 'beige'
 	},
 	listSubItemContainer: {
 		margin: 6,
 		marginLeft: 50,
 		marginRight: 50,
-		elevation: 4,
+		elevation: 2,
 		backgroundColor: 'thistle'
 	},
 

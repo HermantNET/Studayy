@@ -18,7 +18,7 @@ const Layout = (props) => {
 					currentSlide={props.currentSlide}
 					slideCount={props.slideCount}
 				  />
-				: null}
+			: null}
 			<Footer items={props.pages} onTabClick={props.onTabClick}/>
 		</View>
 	);
