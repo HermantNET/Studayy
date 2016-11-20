@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, TextInput} from 'react-native';
+import {View, Text, TextInput, DatePickerAndroid, TouchableWithoutFeedback} from 'react-native';
 import ms from '../../masterStyles';
 import NumUpDown from './NumUpDown';
 
@@ -10,6 +10,20 @@ class TaskDetailsEdit extends Component {
     this.state = {
       task: {...this.props.task}
     };
+  }
+  showPicker = async (stateKey, options) => {
+    try {
+      const {action, year, month, day} = await DatePickerAndroid.open(options);
+      if (action !== DatePickerAndroid.dismissedAction) {
+        this.setState({
+          task: Object.assign({}, this.state.task, {
+              finishBy: [year, month, day]
+            })
+        });
+      }
+    } catch ({code, message}) {
+      console.warn(`Error with DatePickerAndroid '${stateKey}'`, message);
+    }
   }
   render() {
     var task = this.state.task;
@@ -23,7 +37,7 @@ class TaskDetailsEdit extends Component {
             })
           });}}
           placeholder="Task Name"
-          style={ms.textSubTitle}
+          style={[ms.textSubTitle, {minWidth: 200, maxWidth: 400}]}
           value={task.name}
         />
 
@@ -54,7 +68,11 @@ class TaskDetailsEdit extends Component {
         <View style={ms.marginVertical}>
           <Text style={ms.textLabel}>Finish By: </Text>
           <View style={ms.containerSpace}>
-            <Text>{new Date(...task.finishBy).toLocaleDateString()}</Text>
+            <TouchableWithoutFeedback onPress={this.showPicker.bind(this, 'simple', {date: new Date(...task.finishBy)})}>
+              <View>
+                <Text>{new Date(...task.finishBy).toLocaleDateString()}</Text>
+              </View>
+            </TouchableWithoutFeedback>
           </View>
         </View>
 

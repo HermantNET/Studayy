@@ -37,7 +37,7 @@ const state = {
 					name: "Make React Native App",
 					estimatedTime: [0, 2, 30],
 					actualTime: [0, 1, 15],
-					finishBy: [2017, 14, 26],
+					finishBy: [2017, 3, 26],
 					days: [2, 6],
 					distribute: true
 				}, {
@@ -78,8 +78,8 @@ import Main from './components/smart/Main.js';
 // Application entry
 export default function App() {
 	return (
-		<Provider store={store}>
-			<Main/>
-		</Provider>
+  <Provider store={store}>
+    <Main/>
+  </Provider>
 	);
 }
