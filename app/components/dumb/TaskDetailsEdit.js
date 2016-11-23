@@ -123,7 +123,11 @@ class TaskDetailsEdit extends Component {
             <Text>Cancel</Text>
           </View>
         </TouchableHighlight>
-        <TouchableHighlight onPress={this.props.saveChanges.bind(null, task)}>
+        <TouchableHighlight onPress={() => {
+          this.props.saveChanges(task);
+          this.props.toggleEdit();
+        }}
+        >
           <View>
             <Text>Save</Text>
           </View>

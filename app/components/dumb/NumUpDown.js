@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
+import {ToastAndroid, View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
 
 class NumUpDown extends Component {
   constructor(props) {
@@ -14,13 +14,11 @@ class NumUpDown extends Component {
     this.setState({
       number: this.checkNum(num)
     }, function () {
-      if (typeof this.props.onChange === "function") {
-        this.props.onChange(this.state.number);
-      }
+      this.props.onChange(num);
     });
   }
   checkNum(num) {
-    let parsedNum = num === '' ? 0 : parseInt(num);
+    let parsedNum = num === '' ? 0 : Number.isInteger ? num : parseInt(num);
     let result;
     if (isNaN(parsedNum)) {
       result = this.state.number;
@@ -35,14 +33,10 @@ class NumUpDown extends Component {
     return result;
   }
   incrementNum() {
-    this.setState({
-      number: this.checkNum(this.state.number + 1)
-    });
+    this.onChange(this.state.number + 1);
   }
   decrementNum() {
-    this.setState({
-      number: this.checkNum(this.state.number - 1)
-    });
+    this.onChange(this.state.number - 1);
   }
   render() {
     return (

@@ -24,9 +24,9 @@ const TaskDetailsView = (props) => {
         <Text style={ms.textLabel}>Actual Time: </Text>
         <View style={ms.containerSpace}>
           <Text>
-            {task.estimatedTime[0] + (task.estimatedTime[0] === 1 ? " Day, " : " Days, ")}
-            {task.estimatedTime[1] + (task.estimatedTime[1] === 1 ? " Hour, " : " Hours, ")}
-            {task.estimatedTime[2] + (task.estimatedTime[2] === 1 ? " Minute" : " Minutes")}
+            {task.actualTime[0] + (task.actualTime[0] === 1 ? " Day, " : " Days, ")}
+            {task.actualTime[1] + (task.actualTime[1] === 1 ? " Hour, " : " Hours, ")}
+            {task.actualTime[2] + (task.actualTime[2] === 1 ? " Minute" : " Minutes")}
           </Text>
         </View>
       </View>
