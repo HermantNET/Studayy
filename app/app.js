@@ -63,7 +63,8 @@ const state = {
 		showSubjectTasks: [null],
 		selectedTask: {
 			subjectIndex: null,
-			taskIndex: null
+			taskIndex: null,
+			task: null
 		},
 		showTaskDetails: false
 	}

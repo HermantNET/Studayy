@@ -5,29 +5,49 @@ class NumUpDown extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      number: this.props.value ? this.props.value : 0
+      number: this.props.value ? this.props.value : 0,
+      min: this.props.min || 0,
+      max: this.props.max || 100
     };
   }
   onChange(num) {
-    let parsedNum = num === '' ? 0 : parseInt(num);
     this.setState({
-      number: isNaN(parsedNum) || parsedNum < 0 ? this.state.number : parsedNum
+      number: this.checkNum(num)
     }, function () {
       if (typeof this.props.onChange === "function") {
         this.props.onChange(this.state.number);
       }
     });
   }
-  incrementNum() {
+  checkNum(num) {
+    let parsedNum = num === '' ? 0 : parseInt(num);
+    let result;
+    if (isNaN(parsedNum)) {
+      result = this.state.number;
+    } else if (parsedNum < this.state.min) {
+      result = this.state.min;
+    } else if (parsedNum > this.state.max) {
+      result = this.state.max;
+    } else {
+      result = parsedNum;
+    }
 
+    return result;
+  }
+  incrementNum() {
+    this.setState({
+      number: this.checkNum(this.state.number + 1)
+    });
   }
   decrementNum() {
-
+    this.setState({
+      number: this.checkNum(this.state.number - 1)
+    });
   }
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity onPress={this.decrementNum.bind(this)} style={styles.button}>
           <Text>-</Text>
         </TouchableOpacity>
         <TextInput
@@ -38,7 +58,7 @@ class NumUpDown extends Component {
           style={styles.input}
           value={this.state.number.toString()}
         />
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity onPress={this.incrementNum.bind(this)} style={styles.button}>
           <Text>+</Text>
         </TouchableOpacity>
       </View>

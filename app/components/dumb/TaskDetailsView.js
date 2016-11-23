@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, TouchableHighlight} from 'react-native';
 import ms from '../../masterStyles';
 import moment from 'moment';
 
@@ -34,7 +34,7 @@ const TaskDetailsView = (props) => {
       <View style={ms.marginVertical}>
         <Text style={ms.textLabel}>Finish By: </Text>
         <View style={ms.containerSpace}>
-          <Text  style={styles.pill}>{new Date(...task.finishBy).toLocaleDateString()}</Text>
+          <Text  style={[ms.pill, ms.pillActive]}>{moment(task.finishBy).format("MMMM Do, YYYY")}</Text>
         </View>
       </View>
 
@@ -42,27 +42,21 @@ const TaskDetailsView = (props) => {
         <Text style={ms.textLabel}>{task.distribute ? "Days" : "Possible Day"} of Work:</Text>
         <View style={ms.containerSpace}>
           {task.days.length > 0
-            ? task.days.map((day) => <Text key={day} style={styles.pill}>{
+            ? task.days.map((day) => <Text key={day} style={[ms.pill, ms.pillActive]}>{
               moment().isoWeekday(day).format("dddd").toString()
             }</Text>)
             : null
           }
         </View>
       </View>
+      <TouchableHighlight onPress={props.toggleEdit}>
+        <View>
+          <Text>Edit</Text>
+        </View>
+      </TouchableHighlight>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  pill: {
-    width: 80,
-    padding: 2,
-    margin: 2,
-    textAlign: 'center',
-    borderRadius: 10,
-    backgroundColor: 'lightgrey'
-  }
-});
 
 
 export default TaskDetailsView;

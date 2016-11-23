@@ -10,13 +10,17 @@ class TaskDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      edit: false
+      edit: false,
+      task: this.props.task
     };
   }
   toggleEdit() {
     this.setState({
       edit: !this.state.edit
     });
+  }
+  saveChanges(task) {
+    this.props.saveChanges(this.props.subjectIndex, this.props.taskIndex, task);
   }
   render() {
     var task = this.props.task === null ? {
@@ -36,18 +40,17 @@ class TaskDetails extends Component {
             }}
         visible={this.props.showTaskDetails}
       >
-        <ScrollView contentContainerStyle={[ms.pageCenter, {minHeight: 400, padding: 20, backgroundColor: 'white'}]}>
+        <ScrollView contentContainerStyle={{minHeight: 400, padding: 20}}>
           <Text style={ms.textTitle}>{this.props.subjectName}</Text>
           {this.state.edit
-                ? <TaskDetailsEdit task={task} />
-                : <TaskDetailsView task={task} />
+                ? <TaskDetailsEdit
+                  saveChanges={this.saveChanges.bind(this)}
+                  task={task}
+                  toggleEdit={this.toggleEdit.bind(this)}
+                  />
+                : <TaskDetailsView task={task} toggleEdit={this.toggleEdit.bind(this)} />
           }
         </ScrollView>
-        <View style={{padding: 20, margin: 20, marginTop: 0, backgroundColor: 'white', elevation: 25}}>
-          <TouchableHighlight onPress={this.toggleEdit.bind(this)}>
-            <Text>Edit</Text>
-          </TouchableHighlight>
-        </View>
       </Modal>
     );
   }

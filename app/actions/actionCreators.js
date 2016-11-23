@@ -16,6 +16,10 @@ export function createTask(subject, name, estimatedTime, actualTime, finishBy, d
 	};
 }
 
+export function editTask(subjectIndex, taskIndex, task) {
+	return {type: actions.EDIT_TASK, subjectIndex, taskIndex, task};
+}
+
 // *----------------------------------------------------*
 // Subject REST actions
 export function createSubject(name, days) {

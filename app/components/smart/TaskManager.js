@@ -3,7 +3,8 @@ import {ListView} from 'react-native';
 import {
 	toggleShowTaskDetails,
 	toggleShowSubjectTasks,
-	setSelectedTask
+	setSelectedTask,
+	editTask
 } from '../../actions/actionCreators';
 import Subjects from '../dumb/pages/Subjects';
 
@@ -32,8 +33,11 @@ const mapDispatchToProps = (dispatch) => {
 		toggleShowTaskDetails: () => {
 			dispatch(toggleShowTaskDetails());
 		},
-		setSelectedTask: (subjectIndex, taskIndex) => {
-			dispatch(setSelectedTask(subjectIndex, taskIndex));
+		setSelectedTask: (subjectIndex, taskIndex, task) => {
+			dispatch(setSelectedTask(subjectIndex, taskIndex, task));
+		},
+		editTask: (subjectIndex, taskIndex, task) => {
+			dispatch(editTask(subjectIndex, taskIndex, task));
 		}
 	};
 };

@@ -19,7 +19,8 @@ export default function(state = {}, action) {
       return Object.assign({}, state, {
         selectedTask: {
           subjectIndex: action.subjectIndex,
-          taskIndex: action.taskIndex
+          taskIndex: action.taskIndex,
+          task: action.task
         }
       });
     case TOGGLE_SHOW_TASK_DETAILS:

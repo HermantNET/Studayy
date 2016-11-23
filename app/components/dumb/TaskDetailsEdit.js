@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {View, Text, TextInput, DatePickerAndroid, TouchableWithoutFeedback} from 'react-native';
+import {View, Text, TextInput, DatePickerAndroid, TouchableWithoutFeedback, TouchableHighlight} from 'react-native';
 import ms from '../../masterStyles';
 import NumUpDown from './NumUpDown';
+import moment from 'moment';
 
 
 class TaskDetailsEdit extends Component {
@@ -37,31 +38,40 @@ class TaskDetailsEdit extends Component {
             })
           });}}
           placeholder="Task Name"
-          style={[ms.textSubTitle, {minWidth: 200, maxWidth: 400}]}
+          style={ms.textSubTitle}
           value={task.name}
         />
 
         <View style={ms.marginVertical}>
           <Text style={ms.textLabel}>Estimated Time: </Text>
           <View style={ms.containerSpace}>
-            <NumUpDown value={task.estimatedTime[0]} /><Text> Days   </Text>
+            <NumUpDown onChange={(num) => this.setState({
+                task: Object.assign({}, task, {
+                    estimatedTime: [num, this.state.task.estimatedTime[1], this.state.task.estimatedTime[2]]
+                  })
+              })}
+              value={task.estimatedTime[0]}
+            />
+            <Text style={ms.textFixedWidth}> Days</Text>
           </View>
           <View style={ms.containerSpace}>
-            <NumUpDown value={task.estimatedTime[1]} /><Text> Hours  </Text>
+            <NumUpDown value={task.estimatedTime[1]} /><Text style={ms.textFixedWidth}> Hours</Text>
           </View>
           <View style={ms.containerSpace}>
-            <NumUpDown value={task.estimatedTime[2]} /><Text> Minutes</Text>
+            <NumUpDown value={task.estimatedTime[2]} /><Text style={ms.textFixedWidth}> Minutes</Text>
           </View>
         </View>
 
         <View style={ms.marginVertical}>
           <Text style={ms.textLabel}>Actual Time: </Text>
           <View style={ms.containerSpace}>
-            <Text>
-              {task.actualTime[0] + (task.estimatedTime[0] === 1 ? " Day, " : " Days, ")}
-              {task.actualTime[1] + (task.actualTime[1] === 1 ? " Hour, " : " Hours, ")}
-              {task.actualTime[2] + (task.actualTime[2] === 1 ? " Minute" : " Minutes")}
-            </Text>
+            <NumUpDown value={task.actualTime[0]} /><Text style={ms.textFixedWidth}> Days</Text>
+          </View>
+          <View style={ms.containerSpace}>
+            <NumUpDown value={task.actualTime[1]} /><Text style={ms.textFixedWidth}> Hours</Text>
+          </View>
+          <View style={ms.containerSpace}>
+            <NumUpDown value={task.actualTime[2]} /><Text style={ms.textFixedWidth}> Minutes</Text>
           </View>
         </View>
 
@@ -70,7 +80,7 @@ class TaskDetailsEdit extends Component {
           <View style={ms.containerSpace}>
             <TouchableWithoutFeedback onPress={this.showPicker.bind(this, 'simple', {date: new Date(...task.finishBy)})}>
               <View>
-                <Text>{new Date(...task.finishBy).toLocaleDateString()}</Text>
+                <Text style={ms.pill}>{new Date(...task.finishBy).toLocaleDateString()}</Text>
               </View>
             </TouchableWithoutFeedback>
           </View>
@@ -78,8 +88,46 @@ class TaskDetailsEdit extends Component {
 
         <View style={ms.marginVertical}>
           <Text style={ms.textLabel}>{task.distribute ? "Days" : "Possible Day"} of Work:</Text>
-          <View style={ms.containerSpace} />
+          <View style={ms.containerSpace}>
+            {
+              [1,2,3,4,5,6,7].map((day) => {
+                var some = this.state.task.days.some((d) => d === day);
+                return (
+                  <Text
+                    key={day}
+                    onPress={() => {
+                      this.setState({
+                        task: Object.assign({}, task, {
+                                                        days: !some
+                                                          ? this.state.task.days.concat(day)
+                                                          : this.state.task.days.filter((d) => day !== d)
+                                                      })
+                      });
+                    }}
+                    style={[
+                            ms.pill,
+                            some
+                              ? ms.pillActive
+                              : ms.pillInactive
+                          ]}
+                  >
+                    {moment().isoWeekday(day).format("dddd").toString()}
+                  </Text>
+                );
+              })
+            }
+          </View>
         </View>
+        <TouchableHighlight onPress={this.props.toggleEdit}>
+          <View>
+            <Text>Cancel</Text>
+          </View>
+        </TouchableHighlight>
+        <TouchableHighlight onPress={this.props.saveChanges.bind(null, task)}>
+          <View>
+            <Text>Save</Text>
+          </View>
+        </TouchableHighlight>
       </View>
     );
   }

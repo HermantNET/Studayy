@@ -18,8 +18,9 @@ const masterStyles = StyleSheet.create({
 
 	containerSpace: {
 		flexDirection: 'row',
-		justifyContent: 'space-around',
-		alignItems: 'center'
+		justifyContent: 'center',
+		alignItems: 'center',
+		flexWrap: 'wrap'
 	},
 
 	flexRow: {
@@ -45,7 +46,7 @@ const masterStyles = StyleSheet.create({
 		marginLeft: 30,
 		marginRight: 30,
 		elevation: 4,
-		backgroundColor: 'beige'
+		backgroundColor: 'lightgreen'
 	},
 	listSubItemContainer: {
 		margin: 6,
@@ -68,6 +69,26 @@ const masterStyles = StyleSheet.create({
 	textLabel: {
 		fontWeight: '700',
 		textAlign: 'center'
+	},
+	textFixedWidth: {
+		textAlign: 'center',
+		width: 90
+	},
+
+	pill: {
+    padding: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
+    margin: 4,
+    textAlign: 'center',
+    borderRadius: 10
+  },
+	pillActive: {
+		backgroundColor: 'lightgrey'
+	},
+	pillInactive: {
+		color: '#AAA',
+		backgroundColor: '#DDD'
 	},
 
 	marginVertical: {

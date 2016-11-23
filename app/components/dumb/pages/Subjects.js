@@ -36,54 +36,55 @@ class Subjects extends Component {
 	}
 	render() {
 		return (
-			<ScrollView
-				contentContainerStyle={[ms.pageTop, ms.flexRow]}
-			>
-				<ListView
-					dataSource={this.props.dataSource}
-					renderFooter={() => <Text style={ms.textTitle}>Footer</Text>}
-					renderHeader={() => <Text style={ms.textTitle}>Subjects</Text>}
-					renderRow={(subject, _, subjectIndex) => {
+  <ScrollView contentContainerStyle={[ms.pageTop, ms.flexRow]}>
+    <ListView
+      dataSource={this.props.dataSource}
+      renderFooter={() => <Text style={ms.textTitle}>Footer</Text>}
+      renderHeader={() => <Text style={ms.textTitle}>Subjects</Text>}
+      renderRow={(subject, _, subjectIndex) => {
 					return (
-						<View>
-							<ListItem
-								index={subjectIndex}
-								item={subject}
-								toggleShowSubjectTasks={this.props.toggleShowSubjectTasks}
-							/>
-							<View>
-								{this.props.showSubjectTasks.some((index) => index === subjectIndex)
+  <View>
+    <ListItem
+      index={subjectIndex}
+      item={subject}
+      toggleShowSubjectTasks={this.props.toggleShowSubjectTasks}
+    />
+    <View>
+      {this.props.showSubjectTasks.some((index) => index === subjectIndex)
 									? subject.tasks.map((task, taskIndex) => {
 													return (
-														<View key={taskIndex}>
-															<ListSubItem
-																item={task}
-																setSelectedTask={this.props.setSelectedTask}
-																subjectIndex={subjectIndex}
-																taskIndex={taskIndex}
-																toggleShowTaskDetails={this.props.toggleShowTaskDetails}
-															/>
-														</View>
+  <View key={taskIndex}>
+    <ListSubItem
+      item={task}
+      setSelectedTask={this.props.setSelectedTask}
+      subjectIndex={subjectIndex}
+      taskIndex={taskIndex}
+      toggleShowTaskDetails={this.props.toggleShowTaskDetails}
+    />
+  </View>
 													);
 												})
 									: null}
-							</View>
-						</View>
+    </View>
+  </View>
 					);
 				}}
-				/>
-				<TaskDetails
-					showTaskDetails={this.props.showTaskDetails}
-					subjectName={this.props.selectedTask.subjectIndex === null
+    />
+    <TaskDetails
+      saveChanges={this.props.editTask}
+      showTaskDetails={this.props.showTaskDetails}
+      subjectIndex={this.props.selectedTask.subjectIndex}
+      subjectName={this.props.selectedTask.subjectIndex === null
 						? null
 						: this.props.subjects[this.props.selectedTask.subjectIndex].name}
-					task={this.props.selectedTask.taskIndex === null
+      task={this.props.selectedTask.taskIndex === null
 						? null
 						: this.props.subjects[this.props.selectedTask.subjectIndex]
 							.tasks[this.props.selectedTask.taskIndex]}
-					toggleShowTaskDetails={this.props.toggleShowTaskDetails}
-				/>
-			</ScrollView>
+      taskIndex={this.props.selectedTask.taskIndex}
+      toggleShowTaskDetails={this.props.toggleShowTaskDetails}
+    />
+  </ScrollView>
 		);
 	}
 }
